@@ -141,14 +141,14 @@ let timeCounter;
 let timerOn = false;
 
 // Timer function 
- fix((x, y) => {
+ function fix(x, y) {
 
      if (x < 10) {
          return (y.innerHTML = ` 0${x}`);
      } else {
          return (y.innerHTML = ` ${x}`);
      }
- }) 
+ };
 
 
 const restart = document.querySelector(".restart");
@@ -164,7 +164,7 @@ function startTimer() {
         seconds++;
     }
 
-    timeCounter = setInterval( () => {
+    timeCounter = setInterval(function ()  {
         hourTimer.innerHTML = `${hours}`;
         minuteTimer.innerHTML = ` ${minutes} `;
         secondsTimer.innerHTML = ` ${seconds} `;
@@ -186,7 +186,7 @@ function startTimer() {
 
 
 //Restart Gam
- restartGame( () => {
+function  restartGame(){
     timerOn = false;
     moves = 0;
     movesCounter.innerHTML = `0 Moves`;
@@ -205,12 +205,12 @@ function startTimer() {
   
     stars[5].classList.remove('grey');
     stars[3].classList.remove('grey');
-});
+};
 // to restart  the game when the player click on the restart icon
 restart.addEventListener("click", restartGame);
 
-// Win Modal Functio
- win( () => {
+// Win Modal Function
+ function win(){
     if (matchedCards.length === 16) {
     
         timeModal.innerText = timer.innerText;
@@ -220,7 +220,7 @@ restart.addEventListener("click", restartGame);
         clearInterval(timeCounter);
         modal.style.display = 'block';
     }
-}); 
+}; 
 
 btnModal.addEventListener('click',  () => {
     modal.style.display = 'none';
